@@ -2,22 +2,32 @@
 
 echo '<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
 <div class="carousel-indicators">
+
   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+
   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+
   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+
+  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+
 </div>
 <div class="carousel-inner">
 
   <div class="carousel-item active">
-    <img src="https://source.unsplash.com/1400x400/?programming,coding" class="d-block w-100">
+    <img src="../forums/images/banner1.jpg" class="d-block w-100">
   </div>
 
   <div class="carousel-item ">
-    <img src="https://source.unsplash.com/1400x400/?programmer,software" class="d-block w-100">
+    <img src="../forums/images/banner2.png" class="d-block w-100">
   </div>
 
-  <div class="carousel-item">
-    <img src="../forums/images/car8.jpg" class="d-block w-100">
+  <div class="carousel-item ">
+    <img src="../forums/images/banner3.jpg" class="d-block w-100">
+  </div>
+
+  <div class="carousel-item ">
+    <img src="../forums/images/banner4.jpg" class="d-block w-100">
   </div>
 
 

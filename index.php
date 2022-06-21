@@ -11,6 +11,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
 
     <style>
+    ::-webkit-scrollbar
+    {
+        background: #000;
+        cursor: pointer;
+        width: 12px;
+    }
+    ::-webkit-scrollbar-thumb
+    {
+        background-color: rgb(110, 110, 110);
+        border-radius: 25px;
+    }
+
     .footer {
         position: relative;
         margin-bottom: -20px;
@@ -28,11 +40,84 @@
         color: blueviolet;
         cursor: pointer;
     }
-    .card{
-        box-shadow: 1px 1px 10px rgba(183, 183, 183, 0.58);
+
+    .card-title a{
+        text-decoration: none;
+        color: rgb(244, 67, 103);
+        cursor: pointer;
     }
+    
     .card img{
-        height: 240px;
+        height: 210px;
+        width: auto;
+    }
+
+    .carousel-item img{
+        height: 25em;
+    }
+
+    @media only screen and (max-width: 1000px){
+        .carousel-item img{
+            height: 22em;
+        }
+
+        .card img{
+        height: 210px;
+    }
+    }
+
+    @media only screen and (max-width: 900px){
+        .carousel-item img{
+            height: 19em;
+        }
+        .card img{
+        height: 205px;
+        }
+    }
+
+    @media only screen and (max-width: 800px){
+        .carousel-item img{
+            height: 17em;
+        }
+        .card img{
+        height: 205px;
+        }
+    }
+
+    @media only screen and (max-width: 700px){
+        .carousel-item img{
+            height: 16em;
+        }
+        .card img{
+        height: 200px;
+        }
+    }
+
+    @media only screen and (max-width: 600px){
+        .carousel-item img{
+            height: 15em;
+        }
+        .card img{
+            height: 195px;
+        }
+    }
+
+    @media only screen and (max-width: 500px){
+        .carousel-item img{
+            height: 10em;
+        }
+        .card img{
+            height: 195px;
+        }
+    }
+
+    @media only screen and (max-width: 400px){
+        .carousel-item img{
+            height: 9em;
+        }
+        .card img{
+            height: 195px;
+        }
     }
     </style>
 </head>
@@ -78,15 +163,19 @@
             if($nrow > 0){
                 while($row = mysqli_fetch_assoc($ressqlfetch)){
 
-                    echo '<div class="col-md-4 my-4">
-                    <div class="card" style="width:22rem; ">
+                    $id = $row['category_id'];
+                    $catname = $row['category_name'];
+                    $catdesc = $row['category_description'];
 
-                   
-                    <img class="card-img-top" src="./images/'.$row['category_name'].'.jpg" alt="Card image cap">
+
+                    echo '<div class="col-md-4 my-4">
+                    <div class="card"style="width:20rem;">
+
+                    <img class="card-img-top" src="./images/'.$catname.'.jpg" alt="Card image cap">
                     <div class="card-body">
-                       <h5 class="card-title text-capitalize">'.$row['category_name'].'</h5>
-                        <p class="card-text">'.substr($row['category_description'],0,90).'....</p>
-                        <a href="#" class="btn btn-outline-success">View Threads</a>
+                       <h5 class="card-title text-capitalize"><a href="/forums/threadlist.php?catid='.$id.'">'.$catname.'</a></h5>
+                        <p class="card-text">'.substr($catdesc,0,90).'....</p>
+                        <a href="/forums/threadlist.php?catid='.$id.'" class="btn btn-outline-success">View Threads</a>
                     </div>
                     </div>
                 </div>';
