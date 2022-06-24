@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +20,39 @@
         .main-con{
             min-height: 85vh;
         }
+
+              
+    /*  login status display */
+    .username{
+       position: relative;
+       display: inline-block;
+       background-color: rgba(244, 244, 244, 0.274);
+       color: #fff;
+       margin-right: 10px;
+       padding-left: 10px;
+       padding-right: 10px;
+       padding-top: 5px;
+       border-radius: 15px;
+       height: 45px;
+       width: auto;
+    }
+
+    .username span{
+        color: rgb(220, 0, 95);
+        font-weight: 500;
+        margin-top: 15px;
+    }
+    .username p{
+        font-weight: 350;
+        font-size: 15px;
+    }
+
+    .username .useremail{
+        font-size: 12px;
+        color: rgb(210, 210, 210);
+        margin-left: 15px;
+        margin-top: -20px;
+    }
     </style>
 </head>
 <body>

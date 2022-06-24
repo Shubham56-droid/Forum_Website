@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +22,12 @@
     {
         background-color: rgb(110, 110, 110);
         border-radius: 25px;
+    }
+
+    .alertmess{
+        position: absolute;
+        width:100%;
+        z-index:10;
     }
 
     .footer {
@@ -119,6 +126,39 @@
             height: 195px;
         }
     }
+
+    
+    /*  login status display */
+    .username{
+       position: relative;
+       display: inline-block;
+       background-color: rgba(244, 244, 244, 0.274);
+       color: #fff;
+       margin-right: 10px;
+       padding-left: 10px;
+       padding-right: 10px;
+       padding-top: 5px;
+       border-radius: 15px;
+       height: 45px;
+       width: auto;
+    }
+
+    .username span{
+        color: rgb(220, 0, 95);
+        font-weight: 500;
+        margin-top: 15px;
+    }
+    .username p{
+        font-weight: 350;
+        font-size: 15px;
+    }
+
+    .username .useremail{
+        font-size: 12px;
+        color: rgb(210, 210, 210);
+        margin-left: 15px;
+        margin-top: -20px;
+    }
     </style>
 </head>
 
@@ -129,23 +169,22 @@
             Navbar 
     */
     include './partials/_header.php';
+    // redirect to same page after login and signup
+    $currpage = $_SERVER['REQUEST_URI'];
+    $_SESSION['currpageaddress'] = $currpage;
+    ?>
+
+    <?php
     /*
-            Log In modal
-    */
-    include './partials/_loginmodal.php';
-    /*
-            Sign Up modal
-    */
-    include './partials/_signupmodal.php';
-    /*
-            Connecting Database
-    */
-    include './partials/_dbconnect.php';
-    /*
-            Carsousel for website
-    */
-    include './partials/_carsousel.php';
-?>
+                Connecting Database
+        */
+        include './partials/_dbconnect.php';
+        /*
+                Carsousel for website
+        */
+        include './partials/_carsousel.php';
+
+    ?>
 
 
     <div class="container main-con">
@@ -200,8 +239,27 @@
     include './partials/_footer.php';
 ?>
 
-    <!--------- Bootstrap JS ------------->
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xU+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous">
+    </script>
+
+    
+    <!-- ------- Bootstrap JS ----------- -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+            
+    
+
+    <script>
+        let createone = document.getElementById('createone');
+        createone.addEventListener('click',()=>{
+            $('#loginmodal').modal('hide');
+            $('#signupmodal').modal('show');
+        })
+    </script>
+
+    
 </body>
 
 </html>

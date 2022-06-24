@@ -12,26 +12,26 @@ echo '<!-- Button trigger modal -->
         </div>
         <div class="modal-body d-flex flex-column align-items-center">
   
-          <form class="d-flex flex-column w-75">
+          <form class="d-flex flex-column w-75" action="/forums/partials/_handleSignup.php" method="post">
             
             <div class="mb-3">
-              <label for="usernameinput" class="form-label text-muted">Username</label>
-              <input type="text" class="form-control" id="usernameinput" >
+              <label for="signupusername" class="form-label text-muted">Username</label>
+              <input type="text" class="form-control" id="signupusername" name="signupusername" required>
             </div>
 
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label text-muted">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <label for="signupemail" class="form-label text-muted">Email address</label>
+              <input type="email" class="form-control" id="signupemail" name="signupemail" aria-describedby="emailHelp" required>
             </div>
   
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label text-muted">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <input type="password" class="form-control" id="signuppassword" name="signuppassword" required>
             </div>
 
             <div class="mb-3">
               <label for="institution_college" class="form-label text-muted">Institution/College</label>
-              <input type="text" class="form-control" id="institution_college" >
+              <input type="text" class="form-control" id="institution_college" name="institution_college" required> 
             </div>
   
             

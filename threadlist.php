@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +10,10 @@
     <title>Threads</title>
     <!--------- Bootstrap CSS ------------->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+
+
+
+
     <style>
     ::-webkit-scrollbar {
         background: #000;
@@ -55,14 +61,14 @@
         width: 80px;
     }
 
-    .media-body{
+    .media-body {
         padding: 10px;
         width: 80%;
         /* background-color: #000; */
         height: 25%;
     }
 
-    .media-body h5{
+    .media-body h5 {
         color: rgb(0, 140, 255);
         cursor: pointer;
     }
@@ -85,7 +91,8 @@
         color: rgb(95, 95, 95);
         font-weight: 350;
     }
-    .no-message{
+
+    .no-message {
         background-color: rgb(241, 241, 241);
         display: flex;
         justify-content: center;
@@ -95,52 +102,104 @@
         border-radius: 10px;
         border: 2px solid rgb(225, 225, 225);
     }
-    .no-message p{
+
+    .no-message p {
         margin-top: 10px;
         color: rgb(118, 118, 118);
         font-size: 18px;
         font-weight: 350;
     }
-    .readmore{
+
+    .threadhead {
         text-decoration: none;
-        color:rgb(0, 123, 255);
+        color: rgb(0, 123, 255);
         font-weight: 400;
     }
-    .quesheading{
+
+    .threadDesc{
+        margin-top: -5px;
+    }
+
+    .readmore {
+        text-decoration: none;
+        color: rgb(0, 123, 255);
+        font-weight: 400;
+    }
+
+    .quesheading {
         font-weight: 400;
         font-size: 28px;
         color: rgba(128, 128, 128, 0.742);
         margin-top: 40px;
     }
 
-    .discussionform{
+    .discussionform {
         background-color: rgba(211, 211, 211, 0.416);
         padding: 20px;
-        border-radius:10px;
+        border-radius: 10px;
         color: rgb(130, 130, 130);
     }
 
-    .disformheading{
+    .disformheading {
         font-weight: 300;
         font-size: 30px;
         color: rgb(83, 83, 83);
     }
-    .alertmess{
-        width:100%;
-        display:flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 10px;
-    }
-    .alert{
-        width: 60%;
-        margin-top: 10px;
-    }
 
-    .time{
+    .time {
         color: #666;
         font-size: 13px;
+        margin-top: -10px;
     }
+
+    .time .name{
+        color: rgb(255, 0, 98);
+        font-size: 14px;
+    }
+
+    /*  login status display */
+    .username {
+        position: relative;
+        display: inline-block;
+        background-color: rgba(244, 244, 244, 0.274);
+        color: #fff;
+        margin-right: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        border-radius: 15px;
+        height: 45px;
+        width: auto;
+    }
+
+    .username span {
+        color: rgb(220, 0, 95);
+        font-weight: 500;
+        margin-top: 15px;
+    }
+
+    .username p {
+        font-weight: 350;
+        font-size: 15px;
+    }
+
+    .username .useremail {
+        font-size: 12px;
+        color: rgb(210, 210, 210);
+        margin-left: 15px;
+        margin-top: -20px;
+    }
+
+    .loginmessage p{
+        color: #666;
+    }
+
+    .loginmessage span{
+        cursor: pointer;
+        color: rgb(255, 0, 157);
+        font-size: 20px;
+    }
+
     </style>
 </head>
 
@@ -154,15 +213,75 @@
             Connecting Database
     */
     include './partials/_dbconnect.php';
-    /*
-            Log In modal
-    */
-    include './partials/_loginmodal.php';
-    /*
-            Sign Up modal
-    */
-    include './partials/_signupmodal.php';
+    
 ?>
+
+
+    <?php
+    
+
+
+    $method = $_SERVER['REQUEST_METHOD'];
+    if($method == 'POST')
+    {
+        
+
+            // Insert thread into db
+        $th_title = $_POST['title'];
+        $th_desc = $_POST['desc'];
+        $id = $_GET['catid'];
+        $userid = $_SESSION['userid'];
+
+        if($th_desc != "" || $th_desc != "")
+        {
+            $sql = "INSERT INTO `threads`(`thread_subject`,`thread_description`,`thread_cat_id`,`thread_user_id`,`thread_time`) VALUES ('$th_title','$th_desc','$id','$userid',current_timestamp())";
+    
+            $result = mysqli_query($conn,$sql);
+                        
+            if($result){
+                $error = false;
+                $message = "Your question is been addesuccesssfully into forum.";
+                alertdisplay($message,$error);
+            }
+            else
+            {
+                $error = true;
+                $message = "Your question is not added to forubecause of some technical issue.";
+                alertdisplay($message,$error);
+            }
+        }else
+        {
+            $error = true;
+            $message = "Please fill both title and descriptioof your question into the form.";
+            alertdisplay($message,$error);
+        }
+               
+    }
+  
+?>
+
+    <?php
+        // Alert message
+        function alertdisplay($message,$error){
+            if($error){
+                echo '
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong> Failed! </strong>'.$message.'
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+                ';
+            }else{
+                echo '
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong> Successfull! </strong> '.$message.'
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+                ';
+            }
+        }
+        
+        ?>
+
 
 
     <div class="container main-con">
@@ -226,84 +345,50 @@
             </p>
         </div>
 
-        <?php
-        $method = $_SERVER['REQUEST_METHOD'];
-            if($method == 'POST')
-            {
-                // Insert thread into db
-                $th_title = $_POST['title'];
-                $th_desc = $_POST['desc'];
 
-                if($th_desc != "" || $th_desc != "")
-                {
-                    $sql = "INSERT INTO `threads`(`thread_subject`,`thread_description`,`thread_cat_id`,`thread_user_id`,`thread_time`) VALUES('$th_title','$th_desc','$id','1',current_timestamp())";
 
-                    $result = mysqli_query($conn,$sql);
-                    
-                    if($result){
-                        $error = false;
-                        $message = "Your question is been added successsfully into forum.";
-                        alertdisplay($message,$error);
-                    }else{
-                        $error = true;
-                        $message = "Your question is not added to forum because of some technical issue.";
-                        alertdisplay($message,$error);
-                    }
-                }else{
-                    $error = true;
-                        $message = "Please fill both title and description of your question into the form.";
-                        alertdisplay($message,$error);
-                }
-                
-            }
-        ?>
 
-        <?php
-        // Alert message
-        function alertdisplay($message,$error){
-            if($error){
-                echo '<div class="alertmess">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong> Failed! </strong>'.$message.'
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-                </div>
-                ';
-            }else{
-                echo '<div class="alertmess">
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong> Successfull! </strong> '.$message.'
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-                </div>
-                ';
-            }
-        }
-        
-        ?>
 
+        <!-------------------------------------------
+                    Discussion form                 
+        -------------------------------------------->
 
         <div class="container my-3 discussionform">
             <p class="disformheading text-center">Start a Discussion</p>
+            <?php
+                if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
 
-            <form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post">
 
-                <div class="mb-3">
-                    <label for="problemtitle" class="form-label">Problem Title</label>
-                    <input type="text" class="form-control" id="problemtitle"
-                    name="title" placeholder="what do you want to ask ?">
-                  </div>
+                    echo '<form action=" '.$_SERVER['REQUEST_URI'] . '" method="post">
 
-                  <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Problem Description</label>
-                    <textarea class="form-control" 
-                    name = "desc"
-                    id="exampleFormControlTextarea1" rows="3" placeholder="Describe your problem in detail."></textarea>
-                  </div>
+                    <div class="mb-3">
+                        <label for="problemtitle" class="form-label">Problem Title</label>
+                        <input type="text" class="form-control" id="problemtitle" name="title"
+                            placeholder="what do you want to ask ?">
+                    </div>
+    
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Problem Description</label>
+                        <textarea class="form-control" name="desc" id="exampleFormControlTextarea1" rows="3"
+                            placeholder="Describe your problem in detail."></textarea>
+                    </div>
+    
+                    <button type="submit" class="btn btn-success">Ask Question</button>
+    
+                </form>';
 
-                  <button type="submit" class="btn btn-success">Ask Question</button>
 
-            </form>
+                }else{
+                    echo '<div class="loginmessage text-center">
+                        <p>You are not logged in. Please <span id="loginmodalopen">login</span> to start the disscussion and post your query</p>
+                    </div>';
+                    // redirect to same page after login and signup
+                    $currpage = $_SERVER['REQUEST_URI'];
+                    $_SESSION['currpageaddress'] = $currpage;
+                }
+            ?>
+            
+            
 
         </div>
 
@@ -328,19 +413,26 @@
                     $threadSub = $rowdata['thread_subject'];
                     $threadDesc = $rowdata['thread_description'];
                     $threadtime = $rowdata['thread_time'];
+                    $userid = $rowdata['thread_user_id'];
 
+                    $usersql = "SELECT * FROM `users` WHERE `user_id` = '$userid'";
+                    $userres = mysqli_query($conn,$usersql);
+                    while($userdata = mysqli_fetch_assoc($userres)){
 
                     echo '
                     <div class="media d-flex align-items-center  my-3">
                     <img class="mr-3" src="images/user_default_img.png" alt="Generic placeholder image">
                     <div class="media-body">
-                      <h5 class="mt-0"><a class="readmore" href="thread.php?thread_id='.$threadID.'">'.$threadSub.'</a></h5>
-                      <p class="time">Added on : '.$threadtime.'</p>
-                      <p>
-                      '.substr($threadDesc,0,200).'....<a class="readmore" href="thread.php?thread_id='.$threadID.'">readmore</a>
+                    <h5 class="mt-0"><a class="threadhead" href="thread.php?thread_id='.$threadID.'">'.$threadSub.'</a></h5>
+
+                    <p class="threadDesc">'.substr($threadDesc,0,200).'....<a class="readmore" href="thread.php?thread_id='.$threadID.'">readmore</a>
                       </p>
+
+                      <p class="time">Added by <span class="name">'.$userdata['username'].'</span> on : '.date("l jS \of F Y - h:i:s A",strtotime($threadtime)).'</p>
+                    
                     </div>
                 </div>';
+                    }
                 }
             }else{
                 echo '<div class="container no-message">
@@ -364,8 +456,33 @@
     <?php
     include './partials/_footer.php';
 ?>
+
+    <!--------------  Jquery CDN  ----------------->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+    </script>
+
+
+
     <!--------- Bootstrap JS ------------->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+    let createone = document.getElementById('createone');
+    createone.addEventListener('click', () => {
+        $('#loginmodal').modal('hide');
+        $('#signupmodal').modal('show');
+    })
+    </script>
+
+    <script>
+        let loginspan = document.getElementById('loginmodalopen');
+        loginspan.addEventListener('click',()=>{
+            $('#loginmodal').modal('show');
+        })
+    </script>
+
 </body>
 
 </html>
