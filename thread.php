@@ -211,13 +211,19 @@
         margin-left: 15px;
         margin-top: -20px;
     }
+    .userstat{
+        padding-left:10px;
+    }
+    .userstat .username_comment{
+        margin-bottom:-3px;
+    }
     </style>
 </head>
 
 <body>
     <?php
-include './partials/_header.php';
 include './partials/_dbconnect.php';
+include './partials/_header.php';
 ?>
 
     <?php
@@ -225,6 +231,21 @@ include './partials/_dbconnect.php';
         $method = $_SERVER['REQUEST_METHOD'];
         if($method == 'POST'){
             $userComment = $_POST['usercomment'];
+
+            // // protection from attack
+            // $userComment = str_replace("<","&lt;",$userComment);
+            // $userComment = str_replace(">","&gt;",$userComment);
+
+            
+            // convert all html entities to string inside single quote and double quotes
+            $userComment = htmlentities($userComment, ENT_QUOTES);
+            
+            
+            
+            // how to use enter in next line in code
+            $userComment = str_replace("\n","<br>",$userComment);
+
+
 
             $comment_user_id = $_SESSION['userid'];
 
@@ -397,11 +418,17 @@ include './partials/_dbconnect.php';
 
                     while($usernamedata = mysqli_fetch_assoc($resusername)){
                         echo '
-                        <div class="media d-flex align-items-center  my-3">
-                        <img class="mr-3" src="images/user_default_img.png" alt="Generic placeholder image">
+                        <div class="media   my-3">
+                        <div class="userblock d-flex align-items-center">
+                            <img class="mr-3" src="images/user_default_img.png" alt="Generic placeholder image">
+
+                            <div class="userstat">
+                            <p class="username_comment"><a>'.$usernamedata['username'].'</a></p>
+                            <p class="time">Commented on : '.date("l jS \of F Y - h:i:s A",strtotime($commenttime)).'</p>
+                            </div>
+                        </div>
+                        
                         <div class="media-body">
-                          <p class="username_comment"><a>'.$usernamedata['username'].'</a></p>
-                          <p class="time">Commented on : '.date("l jS \of F Y - h:i:s A",strtotime($commenttime)).'</p>
                           
                           <p class="commentdesc">
                           '.$commentcontent.'

@@ -5,9 +5,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     include './_dbconnect.php';
 
     $username = $_POST['signupusername'];
+    $username = htmlentities($username, ENT_QUOTES);
+
     $email = $_POST['signupemail'];
+
     $userpass = $_POST['signuppassword'];
+
     $institution = $_POST['institution_college'];
+
     
     $existsql = "SELECT * FROM `users` WHERE `useremail` = '$email'";
     $resexist = mysqli_query($conn,$existsql);

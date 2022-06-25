@@ -166,6 +166,10 @@
 
     <?php
     /*
+                Connecting Database
+        */
+        include './partials/_dbconnect.php';
+    /*
             Navbar 
     */
     include './partials/_header.php';
@@ -175,10 +179,7 @@
     ?>
 
     <?php
-    /*
-                Connecting Database
-        */
-        include './partials/_dbconnect.php';
+        
         /*
                 Carsousel for website
         */

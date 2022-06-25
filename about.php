@@ -53,21 +53,30 @@
         margin-left: 15px;
         margin-top: -20px;
     }
+    .aboutdesc{
+        background-color: rgb(226, 226, 226);
+        padding:10px;
+    }
+    .aboutdesc span{
+        color: rgb(220, 0, 95);
+        font-weight: 400;
+        font-size: 25px;
+        margin: 5px;
+    }
     </style>
 </head>
 <body>
 
 <!--------header--------->
 <?php
-    include './partials/_header.php';
     include './partials/_dbconnect.php';
+    include './partials/_header.php'; 
 ?>
 
 <div class="main-con container">
     <h1 class="text-center my-3 text-muted">About Us</h1>
-    <p class="my-3">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quo commodi nemo voluptate non incidunt doloribus rerum? Libero cum aliquam nisi, nam excepturi magni nesciunt possimus aut quaerat molestias voluptate recusandae totam autem voluptatum
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora et fuga, doloribus architecto asperiores ipsum neque alias totam consequuntur eaque? Molestiae sed itaque veritatis consequuntur reiciendis sunt atque sint, accusamus aut natus incidunt adipisci iure laboriosam pariatur odit voluptatum nulla amet numquam eius ipsam? Ea fuga modi consequatur libero cum iusto animi veniam aperiam omnis recusandae, dolores officia accusamus repudiandae quod debitis doloremque et eius voluptatum tempore, nam alias. Fuga dolore deserunt incidunt atque optio dignissimos modi quis!
+    <p class="my-3 aboutdesc rounded-2">
+        <span>Let's Discuss</span> is a online forum website which helps programmer all over the world to make community and connect at same platfrom so that they can discuss their issue and helps each other solving the issues. Here threads are divided into diffrent categories according to the programming language and issue are been posted. Users can login to comment on these issues and helps other to solve their issues.
     </p>
 
 </div>

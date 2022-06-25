@@ -12,6 +12,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         while($row = mysqli_fetch_assoc($result)){
             $hashpass = $row['userpass'];
             $username = $row['username'];
+            
+
             $userid = $row['user_id'];
             $checkpass = password_verify($password,$hashpass);
             if($checkpass == true){

@@ -204,16 +204,16 @@
 </head>
 
 <body>
-    <?php
-    /*
-            Navbar 
-    */
-    include './partials/_header.php';
+
+<?php
     /*
             Connecting Database
     */
     include './partials/_dbconnect.php';
-    
+    /*
+            Navbar 
+    */
+    include './partials/_header.php';
 ?>
 
 
@@ -226,9 +226,31 @@
     {
         
 
-            // Insert thread into db
+        // Insert thread into db
         $th_title = $_POST['title'];
         $th_desc = $_POST['desc'];
+
+        // convert all html entities to string inside single quote and double quotes
+        $th_desc = htmlentities($th_desc, ENT_QUOTES); 
+        $th_title = htmlentities($th_title, ENT_QUOTES);
+
+
+
+        // // protection from attack
+        // $th_desc = str_replace("<","&lt;",$th_desc);
+        // $th_desc = str_replace(">","&gt;",$th_desc);
+
+
+
+
+
+        // how to use enter in next line in code
+        $th_desc = str_replace("\n","<br>",$th_desc);
+        $th_title = str_replace("\n","<br>",$th_title);
+
+
+
+
         $id = $_GET['catid'];
         $userid = $_SESSION['userid'];
 
@@ -411,7 +433,14 @@
 
                     $threadID = $rowdata['thread_id'];
                     $threadSub = $rowdata['thread_subject'];
+
+
                     $threadDesc = $rowdata['thread_description'];
+
+                    $threadSub = str_replace("<br>","\n",$threadSub);
+
+                    $threadDesc = str_replace("<br>","\n",$threadDesc);
+
                     $threadtime = $rowdata['thread_time'];
                     $userid = $rowdata['thread_user_id'];
 
@@ -428,7 +457,7 @@
                     <p class="threadDesc">'.substr($threadDesc,0,200).'....<a class="readmore" href="thread.php?thread_id='.$threadID.'">readmore</a>
                       </p>
 
-                      <p class="time">Added by <span class="name">'.$userdata['username'].'</span> on : '.date("l jS \of F Y - h:i:s A",strtotime($threadtime)).'</p>
+                      <p class="time">Asked by <span class="name">'.$userdata['username'].'</span> on : '.date("l jS \of F Y - h:i:s A",strtotime($threadtime)).'</p>
                     
                     </div>
                 </div>';

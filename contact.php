@@ -53,23 +53,54 @@
         margin-left: 15px;
         margin-top: -20px;
     }
+    .contactform{
+        width:70%;
+        margin:auto;
+    }
     </style>
 </head>
 <body>
 
 <!--------header--------->
 <?php
-    include './partials/_header.php';
     include './partials/_dbconnect.php';
+    include './partials/_header.php';
 ?>
 
 
 <div class="main-con container">
     <h1 class="text-center my-3 text-muted">Contact Us</h1>
-    <p class="my-3">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quo commodi nemo voluptate non incidunt doloribus rerum? Libero cum aliquam nisi, nam excepturi magni nesciunt possimus aut quaerat molestias voluptate recusandae totam autem voluptatum
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora et fuga, doloribus architecto asperiores ipsum neque alias totam consequuntur eaque? Molestiae sed itaque veritatis consequuntur reiciendis sunt atque sint, accusamus aut natus incidunt adipisci iure laboriosam pariatur odit voluptatum nulla amet numquam eius ipsam? Ea fuga modi consequatur libero cum iusto animi veniam aperiam omnis recusandae, dolores officia accusamus repudiandae quod debitis doloremque et eius voluptatum tempore, nam alias. Fuga dolore deserunt incidunt atque optio dignissimos modi quis!
-    </p>
+    <form action="" method="post" class="contactform">
+        <div class="mb-3">
+        <label for="yourname" class="form-label">Your Name</label>
+        <input type="text" class="form-control" id="yourname" placeholder="Name" name="yourname">
+        </div>
+
+
+        <div class="mb-3">
+        <label for="youremail" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="youremail" placeholder="Name@example.com" name="youremail">
+        </div>
+
+        <div class="mb-3">
+        <label for="yourphonenumber" class="form-label">Phone Number</label>
+        <input type="text" class="form-control" id="yourphonenumber" placeholder="Phone number" name="yourphonenumber">
+        </div>
+
+        <div class="mb-3">
+        <label for="yourmessage" class="form-label">Message</label>
+        <textarea class="form-control" id="yourmessage" rows="3" name="yourmessage"
+        placeholder="Write your message here...."></textarea>
+        </div>
+
+        <div class="mb-3 ">
+            <button type="button" class="btn btn-success">
+                Send message
+            </button>
+        </div>
+
+
+    </form>
 
 </div>
 

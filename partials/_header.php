@@ -13,16 +13,56 @@ echo '
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
         </li>
+
+
         <li class="nav-item">
           <a class="nav-link" href="./about.php">About</a>
         </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Categories
+          </a>
+          <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+';
+          
+       $sqlcat = "SELECT * FROM `categories`";
+       $rescat = mysqli_query($conn,$sqlcat);
+       
+       while($rowcat = mysqli_fetch_assoc($rescat)){
+          $categoriesname = $rowcat['category_name'];
+          $catvalid = $rowcat['category_id'];
+
+          echo '<li><a class="dropdown-item text-capitalize text-light rounded-1 bg-secondary my-1" href="/forums/threadlist.php?catid='.$catvalid.'">'.$categoriesname.'</a></li>';
+       }
+          
+echo' </ul>
+        </li>
+
+
         <li class="nav-item">
           <a class="nav-link" href="./contact.php">Contact</a>
         </li>
+
+
       </ul>';
+
+
+      echo '
+      <form class="d-flex my-2 mx-2" role="search"  action="search.php" method="get">
+
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+
+      <button class="btn btn-primary" type="submit">Search</button>
+
+      </form>
+      
+      ';
       
      
       
@@ -30,10 +70,6 @@ echo '
       {
 
           echo '
-          <form class="d-flex my-2 mx-2" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-primary" type="button">Search</button>
-          </form>
   
         <div class="username">
           <p>Welcome <span class="name">'.$_SESSION['username'].'</span></p><p class="useremail">'.$_SESSION['useremail'].'</p>
@@ -50,12 +86,6 @@ echo '
 
       }else{
           echo '
-          <form class="d-flex my-2 mx-2" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-primary" type="button">Search</button>
-        </form>
-          
-          
          
           <div class="loginsignupbtn">
             <button type="button" class="btn btn-outline-primary text-light " data-bs-toggle="modal" data-bs-target="#loginmodal">

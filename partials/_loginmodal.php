@@ -23,8 +23,8 @@ echo '<!-- Button trigger modal -->
               <label for="exampleInputPassword1" class="form-label text-muted">Password</label>
               <input type="password" class="form-control" id="loginpassword" name="loginpassword" required/>
             </div>
-  
-            
+
+      
             
           <button type="submit" class="btn btn-success my-4">Login to continue</button>
           </form>
