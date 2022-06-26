@@ -255,44 +255,7 @@ include './partials/_header.php';
 
     <!--------- Bootstrap JS ------------->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-
-
-    <script>
-    let createone = document.getElementById('createone');
-    createone.addEventListener('click', () => {
-        $('#loginmodal').modal('hide');
-        $('#signupmodal').modal('show');
-    })
-    </script>
-
-    <script>
-    let postbtn = document.getElementById('postbtn');
-    let commentbox = document.getElementById('commentbox');
-
-    postbtn.addEventListener('click', () => {
-        postbtn.classList.toggle('active');
-        commentbox.classList.toggle('active');
-
-        if (postbtn.className == 'btn btn-success active') {
-            postbtn.innerText = "Cancel Post";
-            postbtn.classList.remove('btn-success');
-            postbtn.classList.add('btn-danger');
-        } else {
-            postbtn.innerText = "Comment";
-            postbtn.classList.remove('btn-danger');
-            postbtn.classList.add('btn-success');
-        }
-    })
-
-
-    </script>
-
-    <script>
-       let logcombtn = document.getElementById("logintocomment");
-       logcombtn.addEventListener("click",()=>{
-            $('#loginmodal').modal('show');
-       })
-    </script>
+    <script src="./js/thread.js"></script>
 
 </body>
 
