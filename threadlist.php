@@ -304,26 +304,9 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
     </script>
 
-
-
     <!--------- Bootstrap JS ------------->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-
-
-    <script>
-    let createone = document.getElementById('createone');
-    createone.addEventListener('click', () => {
-        $('#loginmodal').modal('hide');
-        $('#signupmodal').modal('show');
-    })
-    </script>
-
-    <script>
-        let loginspan = document.getElementById('loginmodalopen');
-        loginspan.addEventListener('click',()=>{
-            $('#loginmodal').modal('show');
-        })
-    </script>
+    <script src="./js/threadlist.js"></script>
 </body>
 
 </html>

@@ -101,25 +101,12 @@
         include './partials/_footer.php';
     ?>
 
-    <script
-    src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xU+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-    crossorigin="anonymous">
-    </script>
+    <!--------------  Jquery CDN  ----------------->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xU+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    
     <!-- ------- Bootstrap JS ----------- -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-            
-
-
-    <script>
-        let createone = document.getElementById('createone');
-        createone.addEventListener('click',()=>{
-            $('#loginmodal').modal('hide');
-            $('#signupmodal').modal('show');
-        })
-    </script>
+    <script src="./js/search.js"></script>
 
 
     
