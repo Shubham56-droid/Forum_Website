@@ -1,0 +1,103 @@
+::-webkit-scrollbar {
+  background: #000;
+  cursor: pointer;
+  width: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(110, 110, 110);
+  border-radius: 25px;
+}
+
+.alertmess {
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+}
+
+.footer {
+  position: relative;
+  margin-bottom: -20px;
+}
+
+.main-con {
+  min-height: 85vh;
+}
+
+.instruction {
+  font-size: 12px;
+}
+
+.link {
+  color: blueviolet;
+  cursor: pointer;
+}
+
+/*  login status display */
+.username {
+  position: relative;
+  display: inline-block;
+  background-color: rgba(244, 244, 244, 0.274);
+  color: #fff;
+  margin-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  border-radius: 15px;
+  height: 45px;
+  width: auto;
+}
+
+.username span {
+  color: rgb(220, 0, 95);
+  font-weight: 500;
+  margin-top: 15px;
+}
+.username p {
+  font-weight: 350;
+  font-size: 15px;
+}
+
+.username .useremail {
+  font-size: 12px;
+  color: rgb(210, 210, 210);
+  margin-left: 15px;
+  margin-top: -20px;
+}
+.searchresult .searchresulthead {
+  font-size: 25px;
+  font-weight: 300;
+  background-color: rgba(235, 235, 235, 0.562);
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px rgba(107, 107, 107, 0.578);
+}
+.searchresult p span {
+  font-weight: 400;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(255, 57, 96);
+}
+.result {
+  background-color: rgba(238, 238, 238, 0.562);
+  padding: 7px;
+  padding-left: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px rgba(107, 107, 107, 0.578);
+}
+.result a {
+  text-decoration: none;
+  color: rgb(153, 0, 255);
+  font-size: 18px;
+  font-weight: 350;
+  transition: 0.3s;
+}
+.result a:hover {
+  color: rgb(212, 0, 255);
+}
+
+.result .descthread {
+  font-size: 12px;
+  color: rgb(159, 159, 159);
+  margin-left: 10px;
+}
