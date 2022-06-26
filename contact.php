@@ -24,22 +24,29 @@
     <?php
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
     $name = $_POST['yourname'];
     $email = $_POST['youremail'];
     $phone = $_POST['yourphonenumber'];
     $message = $_POST['yourmessage'];
 
     // if  user has pressed enter
-    $message = str_replace("\n","<br>",$message); // if user try to add some
-    scripting or code $name = htmlentities($name, ENT_QUOTES); $phone =
-    htmlentities($phone, ENT_QUOTES); $message = htmlentities($message,
-    ENT_QUOTES); $sql = "INSERT INTO `contact`
-    (`sendername`,`senderemail`,`senderphone`,`sendermessage`) VALUES
-    ('$name','$email','$phone','$message')"; $result = mysqli_query($conn,$sql);
-    if($result){ $errorStatus = false; $errorMessage = "Your message is been
-    successfully send."; loginsigndisplay($errorMessage,$errorStatus); }else{
+    $message = str_replace("\n","<br>",$message);
+    
+    $name = htmlentities($name, ENT_QUOTES); 
+    $phone = htmlentities($phone, ENT_QUOTES); $message = htmlentities($message,ENT_QUOTES); 
+    $sql = "INSERT INTO `contact`(`sendername`,`senderemail`,`senderphone`,`sendermessage`) VALUES('$name','$email','$phone','$message')"; $result = mysqli_query($conn,$sql);
+    if($result)
+    { $errorStatus = false; 
+      $errorMessage = 
+      "Your message is been successfully send.";
+      loginsigndisplay($errorMessage,$errorStatus);
+    }
+    else
+    {
     $errorStatus = true; $errorMessage = "Sorry to failed to send your message";
-    loginsigndisplay($errorMessage,$errorStatus); } } ?>
+    loginsigndisplay($errorMessage,$errorStatus); 
+    } } ?>
 
     <div class="main-con container">
       <h1 class="text-center my-3 text-muted">Contact Us</h1>

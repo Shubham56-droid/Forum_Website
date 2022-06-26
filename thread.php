@@ -70,7 +70,6 @@ include './partials/_header.php';
     ?>
 
     <?php
-        // Alert message
         function alertdisplay($message,$error){
             if($error){
                 echo '<div class="alertmess">
@@ -154,8 +153,6 @@ include './partials/_header.php';
                     }else
                     { 
                         echo '<a type="btn" class="btn btn-success" id="logintocomment">Login To Comment</a>';
-
-                        // redirect to same page after login and signup
                         $currpage = $_SERVER['REQUEST_URI'];
                         $_SESSION['currpageaddress'] = $currpage;
                     }
@@ -256,6 +253,12 @@ include './partials/_header.php';
     <!--------- Bootstrap JS ------------->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/thread.js"></script>
+    <script>
+    let logcombtn = document.getElementById("logintocomment");
+    logcombtn.addEventListener("click", () => {
+        $("#loginmodal").modal("show");
+    });
+    </script>
 
 </body>
 

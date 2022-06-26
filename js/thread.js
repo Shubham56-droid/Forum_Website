@@ -4,6 +4,8 @@ createone.addEventListener("click", () => {
   $("#signupmodal").modal("show");
 });
 
+
+
 let postbtn = document.getElementById("postbtn");
 let commentbox = document.getElementById("commentbox");
 
@@ -22,7 +24,6 @@ postbtn.addEventListener("click", () => {
   }
 });
 
-let logcombtn = document.getElementById("logintocomment");
-logcombtn.addEventListener("click", () => {
-  $("#loginmodal").modal("show");
-});
+
+
+

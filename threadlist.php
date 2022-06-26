@@ -171,10 +171,6 @@
                 </li>
             </ol>
 
-
-            <p class="lead ">
-                <a class="btn text-muted btn-warning btn-lg" href="#" role="button">Learn more</a>
-            </p>
         </div>
 
 

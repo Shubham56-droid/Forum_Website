@@ -1,6 +1,6 @@
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    // connecting to the database
+
     include './_dbconnect.php';
     $email = $_POST['loginemail'];
     $password = $_POST['loginpassword'];
@@ -23,9 +23,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $_SESSION['useremail'] = $email;
                 $_SESSION['username'] = $username;
                 $_SESSION['userid'] = $userid;
-
-                // $message = "You have been successfully login into your account.";
-                // header("Location: /forums/index.php?error=false&message=$message");
 
                 header("Location: ".$_SESSION['currpageaddress']);
                 exit();

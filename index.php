@@ -17,26 +17,14 @@
 
   <body>
     <?php
-    /*
-                Connecting Database
-        */
-        include './partials/_dbconnect.php';
-    /*
-            Navbar 
-    */
+    include './partials/_dbconnect.php';
     include './partials/_header.php';
-    // redirect to same page after login and signup
     $currpage = $_SERVER['REQUEST_URI'];
     $_SESSION['currpageaddress'] = $currpage;
     ?>
 
     <?php
-        
-        /*
-                Carsousel for website
-        */
-        include './partials/_carsousel.php';
-
+      include './partials/_carsousel.php';
     ?>
 
     <div class="container main-con">
