@@ -10,60 +10,7 @@
 
     <!--------- Bootstrap CSS ------------->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
-
-    <style>
-        .footer{
-            position: relative;
-            margin-bottom: -20px;
-        }
-
-        .main-con{
-            min-height: 85vh;
-        }
-
-              
-    /*  login status display */
-    .username{
-       position: relative;
-       display: inline-block;
-       background-color: rgba(244, 244, 244, 0.274);
-       color: #fff;
-       margin-right: 10px;
-       padding-left: 10px;
-       padding-right: 10px;
-       padding-top: 5px;
-       border-radius: 15px;
-       height: 45px;
-       width: auto;
-    }
-
-    .username span{
-        color: rgb(220, 0, 95);
-        font-weight: 500;
-        margin-top: 15px;
-    }
-    .username p{
-        font-weight: 350;
-        font-size: 15px;
-    }
-
-    .username .useremail{
-        font-size: 12px;
-        color: rgb(210, 210, 210);
-        margin-left: 15px;
-        margin-top: -20px;
-    }
-    .aboutdesc{
-        background-color: rgb(226, 226, 226);
-        padding:10px;
-    }
-    .aboutdesc span{
-        color: rgb(220, 0, 95);
-        font-weight: 400;
-        font-size: 25px;
-        margin: 5px;
-    }
-    </style>
+    <link rel="stylesheet" href="./css/about.css">
 </head>
 <body>
 

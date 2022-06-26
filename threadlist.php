@@ -10,197 +10,7 @@
     <title>Threads</title>
     <!--------- Bootstrap CSS ------------->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
-
-
-
-
-    <style>
-    ::-webkit-scrollbar {
-        background: #000;
-        cursor: pointer;
-        width: 12px;
-
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background-color: rgb(110, 110, 110);
-        border-radius: 25px;
-    }
-
-    .footer {
-        position: relative;
-        margin-bottom: -20px;
-    }
-
-    .main-con {
-        min-height: 85vh;
-    }
-
-
-    .instruction {
-        font-size: 12px;
-    }
-
-    .link {
-        color: blueviolet;
-        cursor: pointer;
-    }
-
-    .jumbotron {
-        background: rgba(222, 222, 222, 0.274);
-    }
-
-    .forumName {
-        color: rgb(239, 54, 91);
-        font-weight: 600;
-    }
-
-
-    .media img {
-        height: 80px;
-        width: 80px;
-    }
-
-    .media-body {
-        padding: 10px;
-        width: 80%;
-        /* background-color: #000; */
-        height: 25%;
-    }
-
-    .media-body h5 {
-        color: rgb(0, 140, 255);
-        cursor: pointer;
-    }
-
-    .rules {
-        font-size: 16px;
-        font-weight: 200;
-        color: rgb(78, 78, 78);
-    }
-
-    .rules-heading {
-        color: rgb(0, 192, 0);
-        font-weight: 400;
-        font-size: 22px;
-    }
-
-    .catdesc {
-        margin-left: 20px;
-        width: 90%;
-        color: rgb(95, 95, 95);
-        font-weight: 350;
-    }
-
-    .no-message {
-        background-color: rgb(241, 241, 241);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 10px;
-        padding: 15px;
-        border-radius: 10px;
-        border: 2px solid rgb(225, 225, 225);
-    }
-
-    .no-message p {
-        margin-top: 10px;
-        color: rgb(118, 118, 118);
-        font-size: 18px;
-        font-weight: 350;
-    }
-
-    .threadhead {
-        text-decoration: none;
-        color: rgb(0, 123, 255);
-        font-weight: 400;
-    }
-
-    .threadDesc{
-        margin-top: -5px;
-    }
-
-    .readmore {
-        text-decoration: none;
-        color: rgb(0, 123, 255);
-        font-weight: 400;
-    }
-
-    .quesheading {
-        font-weight: 400;
-        font-size: 28px;
-        color: rgba(128, 128, 128, 0.742);
-        margin-top: 40px;
-    }
-
-    .discussionform {
-        background-color: rgba(211, 211, 211, 0.416);
-        padding: 20px;
-        border-radius: 10px;
-        color: rgb(130, 130, 130);
-    }
-
-    .disformheading {
-        font-weight: 300;
-        font-size: 30px;
-        color: rgb(83, 83, 83);
-    }
-
-    .time {
-        color: #666;
-        font-size: 13px;
-        margin-top: -10px;
-    }
-
-    .time .name{
-        color: rgb(255, 0, 98);
-        font-size: 14px;
-    }
-
-    /*  login status display */
-    .username {
-        position: relative;
-        display: inline-block;
-        background-color: rgba(244, 244, 244, 0.274);
-        color: #fff;
-        margin-right: 10px;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-top: 5px;
-        border-radius: 15px;
-        height: 45px;
-        width: auto;
-    }
-
-    .username span {
-        color: rgb(220, 0, 95);
-        font-weight: 500;
-        margin-top: 15px;
-    }
-
-    .username p {
-        font-weight: 350;
-        font-size: 15px;
-    }
-
-    .username .useremail {
-        font-size: 12px;
-        color: rgb(210, 210, 210);
-        margin-left: 15px;
-        margin-top: -20px;
-    }
-
-    .loginmessage p{
-        color: #666;
-    }
-
-    .loginmessage span{
-        cursor: pointer;
-        color: rgb(255, 0, 157);
-        font-size: 20px;
-    }
-
-    </style>
+    <link rel="stylesheet" href="./css/threadlist.css">
 </head>
 
 <body>
@@ -427,8 +237,9 @@
             $sqlques = "SELECT * FROM `threads` WHERE `thread_cat_id` = $cat_id ORDER BY `thread_id` DESC";
             $result = mysqli_query($conn,$sqlques);
             $numRow = mysqli_num_rows($result);
-
+            
             if($numRow > 0){
+         
                 while($rowdata = mysqli_fetch_assoc($result)){
 
                     $threadID = $rowdata['thread_id'];
@@ -446,6 +257,7 @@
 
                     $usersql = "SELECT * FROM `users` WHERE `user_id` = '$userid'";
                     $userres = mysqli_query($conn,$usersql);
+
                     while($userdata = mysqli_fetch_assoc($userres)){
 
                     echo '
@@ -463,6 +275,7 @@
                 </div>';
                     }
                 }
+
             }else{
                 echo '<div class="container no-message">
                          <p>No thread found. Be the first person to ask.</p>
@@ -511,7 +324,6 @@
             $('#loginmodal').modal('show');
         })
     </script>
-
 </body>
 
 </html>

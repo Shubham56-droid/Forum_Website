@@ -10,54 +10,7 @@
 
     <!--------- Bootstrap CSS ------------->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
-
-    <style>
-        .footer{
-            position: relative;
-            margin-bottom: -20px;
-        }
-
-        .main-con{
-            min-height: 85vh;
-        }
-
-              
-    /*  login status display */
-    .username{
-       position: relative;
-       display: inline-block;
-       background-color: rgba(244, 244, 244, 0.274);
-       color: #fff;
-       margin-right: 10px;
-       padding-left: 10px;
-       padding-right: 10px;
-       padding-top: 5px;
-       border-radius: 15px;
-       height: 45px;
-       width: auto;
-    }
-
-    .username span{
-        color: rgb(220, 0, 95);
-        font-weight: 500;
-        margin-top: 15px;
-    }
-    .username p{
-        font-weight: 350;
-        font-size: 15px;
-    }
-
-    .username .useremail{
-        font-size: 12px;
-        color: rgb(210, 210, 210);
-        margin-left: 15px;
-        margin-top: -20px;
-    }
-    .contactform{
-        width:70%;
-        margin:auto;
-    }
-    </style>
+    <link rel="stylesheet" href="./css/contact.css">
 </head>
 <body>
 
@@ -70,7 +23,7 @@
 
 <div class="main-con container">
     <h1 class="text-center my-3 text-muted">Contact Us</h1>
-    <form action="" method="post" class="contactform">
+    <form action="contact.php" method="post" class="contactform">
         <div class="mb-3">
         <label for="yourname" class="form-label">Your Name</label>
         <input type="text" class="form-control" id="yourname" placeholder="Name" name="yourname">
@@ -94,7 +47,7 @@
         </div>
 
         <div class="mb-3 ">
-            <button type="button" class="btn btn-success">
+            <button type="submit" class="btn btn-success">
                 Send message
             </button>
         </div>
