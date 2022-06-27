@@ -16,10 +16,11 @@
 <img src="./images/Screenshot (811).png"/>
 <h5>Sign Up Modal</h2>
 <img src="./images/Screenshot (812).png"/>
-<h5>After Login User Can Start Disscussion</h2>
+<h5>Logut Button Displayed After Login</h2>
 <img src="./images/Screenshot (813).png"/>
-<h5>After Login User Can Add Comment</h2>
+<h5>After Login User Can Start Disscussion</h2>
 <img src="./images/Screenshot (814).png"/>
+<h5>After Login User Can Add Comment</h2>
 <img src="./images/Screenshot (815).png"/>
 <img src="./images/Screenshot (816).png"/>
 
